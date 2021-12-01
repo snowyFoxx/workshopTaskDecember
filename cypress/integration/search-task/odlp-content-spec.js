@@ -1,41 +1,42 @@
 describe("ODLP content check - desktop", () => {
 
-    beforeEach(() => {
+    before(() => {
         cy.log("Accept cookies")
         cy.setCookie("__kwc_agreed", "true")
         cy.visit("/en/cheap-flights/london-united-kingdom/malaga-spain/")
     })
 
-    it('should check "Return", "One-Way", "All" filters', () => {
+    it("should check section", () => {
         cy.log("Return should be clickable")
         cy.get("[data-test=ResultsTabReturn]").click({ force: true })
         cy.log("Return should be clickable")
         cy.get("[data-test=ResultsTabAll]").click({ force: true })
-        cy.log("Return should be clickable")
+        cy.log("Feliz Navidad")
         cy.get("[data-test=ResultsTabOneway]").click({ force: true })
     })
 
-    it("should check visibility of filters on the left", () => {
+    it("should check some stuff out there", () => {
         cy.log("Search by stops")
-        cy.get("[data-test=FiltersDesktop] [data-test=FilterByStops]")
+        cy.get("[data-test=FilterByStops]").should("exist")
         cy.log("Search by carrier")
-        cy.get("[data-test=FiltersDesktop] [data-test=FilterByCarrier]")
+        cy.get("[data-test=FilterByCarrier]").should("exist")
         cy.log("Search by price")
-        cy.get("[data-test=FiltersDesktop] [data-test=FilterByPrice]")
+        cy.get("[data-test=FilterByPrice]").should("exist")
         cy.log("Search by departure date")
-        cy.get("[data-test=FiltersDesktop] [data-test=FilterByDate]")
+        cy.get("[data-test=FilterByDate]").should("exist")
     })
 
     it("should check Map section", () => {
         cy.log("Map on the right and button should be visible")
         cy.get("[class*=ExploreMap]").should("be.visible")
         cy.contains("Explore the map")
+        cy.get("[data-test=HeaderLinks] a:eq(0)").click()
     })
 
     it("should have footer section", () => {
         cy.log('Check Company "Footer" section')
         cy.get("[data-test=FooterLinksColumn] a")
             .its("length")
-            .should("equal", 6)
+            .should("be.at.least", 5)
     })
 })
