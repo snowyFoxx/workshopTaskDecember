@@ -1,0 +1,5 @@
+{
+  "baseUrl": "https://www.kiwi.com",
+  "defaultCommandTimeout": 20000,
+  "pageLoadTimeout": 90000
+}
