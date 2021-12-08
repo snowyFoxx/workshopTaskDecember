@@ -4,6 +4,7 @@ describe("ODLP content check - desktop", () => {
         cy.log("Accept cookies")
         cy.setCookie("__kwc_agreed", "true")
         cy.visit("/en/cheap-flights/london-united-kingdom/malaga-spain/")
+
     })
 
     it("should check One-way, Return and All buttons", () => {
